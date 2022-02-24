@@ -1,10 +1,10 @@
-package com.gutembergmauricio.workshopmongo;
+package com.mauricio.workshopmongomauricio;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WorkshopmongoApplicationTests {
+class WorkshopmongomauricioApplicationTests {
 
     @Test
     void contextLoads() {
