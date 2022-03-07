@@ -3,10 +3,10 @@ package com.mauricio.workshopmongomauricio.UserDTO;
 import com.mauricio.workshopmongomauricio.domain.User;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
-
     private String id;
     private String name;
     private String email;
