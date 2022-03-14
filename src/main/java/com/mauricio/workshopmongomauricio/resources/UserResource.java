@@ -1,6 +1,7 @@
 package com.mauricio.workshopmongomauricio.resources;
 
 import com.mauricio.workshopmongomauricio.UserDTO.UserDTO;
+import com.mauricio.workshopmongomauricio.domain.Post;
 import com.mauricio.workshopmongomauricio.domain.User;
 import com.mauricio.workshopmongomauricio.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -32,6 +32,7 @@ public class UserResource {
         User obj = service.findById(id);
         return ResponseEntity.ok().body(new UserDTO(obj));
     }
+
 
     @PostMapping
     public ResponseEntity<Void> insert(@RequestBody UserDTO objDto){
@@ -55,5 +56,12 @@ public class UserResource {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value="/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
+    }
+
 
 }
