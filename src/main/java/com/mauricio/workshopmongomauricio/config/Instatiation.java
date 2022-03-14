@@ -1,5 +1,6 @@
 package com.mauricio.workshopmongomauricio.config;
 
+import com.mauricio.workshopmongomauricio.UserDTO.AuthorDTO;
 import com.mauricio.workshopmongomauricio.domain.Post;
 import com.mauricio.workshopmongomauricio.domain.User;
 import com.mauricio.workshopmongomauricio.repository.PostRepository;
@@ -36,10 +37,12 @@ public class Instatiation implements CommandLineRunner {
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User (null, "Bob Grey", "bob@gmail.com");
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "vou viajar para são paulo. Abraços!", maria );
-        Post post2 = new Post(null, sdf.parse("25/03/2018"), "Bom dia", "Acordei feliz hoje!", maria);
-
         userRepository.saveAll(Arrays.asList(maria, alex,bob));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "vou viajar para são paulo. Abraços!", new AuthorDTO((maria)));
+        Post post2 = new Post(null, sdf.parse("25/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO((maria)));
+
+
         postRepository.saveAll(Arrays.asList(post1,post2));
     }
 }
